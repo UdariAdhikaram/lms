@@ -30,7 +30,7 @@
 				<div class="signin-content">
 					<div class="signin-image">
 						<figure>
-							<img src="images/lms.png" alt="sing up image">
+							<img src="images/LMS.png" alt="sing up image">
 						</figure>
 						<!-- <a href="registration.jsp" class="signup-image-link">Create an
 							account</a>-->
