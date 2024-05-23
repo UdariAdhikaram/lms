@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.lms.DBConnection.DB;
-import com.mysql.cj.protocol.Resultset;
+
 
 
 @WebServlet("/login")
@@ -27,16 +27,22 @@ public class login extends HttpServlet {
 		HttpSession session = request.getSession();
 		RequestDispatcher dispatcher = null;
 		
+		 	Connection conn = null;
+	        PreparedStatement pst = null;
+	        ResultSet rs = null;
+		
+		
 		try {
-			Connection conn = DB.connect();
-			PreparedStatement pst = conn.prepareStatement("SELECT username,role,firstname,lastname FROM users WHERE username=? AND password=? AND status='active'");
+			conn = DB.connect();
+			pst = conn.prepareStatement("SELECT username,role,firstname,lastname FROM users WHERE username=? AND password=? AND status='active'");
 			pst.setString(1, un);
 			pst.setString(2, pass);
 			
-			ResultSet rs = pst.executeQuery();		
+			rs = pst.executeQuery();
 			
 			if(rs.next()) {
 				int role = rs.getInt("role");
+
 				if(role==1) {
 					dispatcher = request.getRequestDispatcher("admin_dashboard/index.jsp");
 				}
