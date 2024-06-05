@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import com.lms.DBConnection.DB;
 
 
-
 @WebServlet("/login")
 public class login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
